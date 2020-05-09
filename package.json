@@ -1,5 +1,5 @@
 {
-    "name": "@ss/web-admin",
+    "name": "@qsusu/web-admin",
     "version": "0.1.0",
     "author": "SuSu Qiu",
     "main": "lib/ss-admin.common.js",

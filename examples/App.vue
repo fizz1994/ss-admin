@@ -62,11 +62,8 @@ export default {
     methods: {
         queryInintHandle() {
             this.page.currnet = 1;
-            console.log('search');
         },
-        resetHandle() {
-            console.log('reset');
-        }
+        resetHandle() {}
     }
 };
 </script>
