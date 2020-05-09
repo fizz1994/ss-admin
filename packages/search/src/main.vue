@@ -1,11 +1,13 @@
 <template>
     <div class="ss-search-condition">
         <el-form
-            ref="form"
+            :ref="ref"
             :size="size"
             :inline="inline"
             :label-position="labelPosition"
             :label-width="labelWidth"
+            :model="model"
+            :rules="rules"
         >
             <!-- 请求条件 -->
             <el-row
@@ -27,10 +29,10 @@
                 <!-- 操作 -->
             </el-row>
             <el-form-item ref="ops" class="ss-search-condition__ops">
-                <el-button size="small" type="primary" @click="$emit('search')">
+                <el-button size="small" type="primary" @click="search">
                     查询
                 </el-button>
-                <el-button size="small" type="warning" @click="$emit('search')">
+                <el-button size="small" type="warning" @click="reset">
                     重置
                 </el-button>
                 <slot name="more-op"></slot>
@@ -78,16 +80,38 @@ export default {
         labelWidth: {
             type: String,
             default: '100px'
+        },
+        model: {
+            type: Object,
+            default: () => {
+                return {};
+            }
+        },
+        rules: {
+            type: Object,
+            default: () => {
+                return {};
+            }
         }
     },
     data() {
         return {
+            ref: Symbol('form'),
             isExpend: false,
             opsWidth: 0,
             inputsWidth: 0
         };
     },
     methods: {
+        search() {
+            this.$emit('search');
+        },
+        reset() {
+            console.log(this.$refs[this.ref]);
+            this.$refs[this.ref].resetFields();
+            this.$emit('reset');
+            this.search();
+        },
         handleResize() {
             let computedStyle;
             if (window.getComputedStyle) {

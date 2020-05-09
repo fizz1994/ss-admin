@@ -1,28 +1,30 @@
 <template>
     <div id="app">
-        <ss-search-condition has-expend>
-            <ss-search-condition-item label="企业名称">
-                <el-input></el-input>
+        <ss-search-condition
+            :model="po"
+            has-expend
+            @search="queryInintHandle"
+            @reset="resetHandle"
+        >
+            <ss-search-condition-item label="企业名称" prop="name">
+                <el-input v-model="po.name"></el-input>
             </ss-search-condition-item>
-            <ss-search-condition-item label="企业编码">
-                <el-input placeholder=""></el-input>
+            <ss-search-condition-item label="企业编码" prop="code">
+                <el-input v-model="po.code"></el-input>
             </ss-search-condition-item>
-            <ss-search-condition-item label="BD">
-                <el-input></el-input>
+            <ss-search-condition-item label="BD" prop="bdName">
+                <el-input v-model="po.bdName"></el-input>
             </ss-search-condition-item>
 
             <template slot="more">
-                <ss-search-condition-item label="企业名称">
-                    <el-input></el-input>
+                <ss-search-condition-item label="企业名称1" prop="name1">
+                    <el-input v-model="po.name1"></el-input>
                 </ss-search-condition-item>
-                <ss-search-condition-item label="企业编码">
-                    <el-input></el-input>
+                <ss-search-condition-item label="企业编码1" prop="code1">
+                    <el-input v-model="po.code1"></el-input>
                 </ss-search-condition-item>
-                <ss-search-condition-item label="BD">
-                    <el-input></el-input>
-                </ss-search-condition-item>
-                <ss-search-condition-item label="状态">
-                    <el-input></el-input>
+                <ss-search-condition-item label="BD1" prop="bdName1">
+                    <el-input v-model="po.bdName1"></el-input>
                 </ss-search-condition-item>
             </template>
             <template slot="more-op">
@@ -37,8 +39,24 @@ export default {
     name: 'App',
     data() {
         return {
-            isExpend: false
+            isExpend: false,
+            po: {
+                name: '',
+                code: '',
+                bdName: '',
+                name1: '',
+                code1: '',
+                bdName1: ''
+            }
         };
+    },
+    methods: {
+        queryInintHandle() {
+            console.log('search');
+        },
+        resetHandle() {
+            console.log('reset');
+        }
     }
 };
 </script>
