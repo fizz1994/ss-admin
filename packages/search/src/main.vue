@@ -107,7 +107,6 @@ export default {
             this.$emit('search');
         },
         reset() {
-            console.log(this.$refs[this.ref]);
             this.$refs[this.ref].resetFields();
             this.$emit('reset');
             this.search();

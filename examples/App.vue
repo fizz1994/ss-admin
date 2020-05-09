@@ -47,11 +47,21 @@ export default {
                 name1: '',
                 code1: '',
                 bdName1: ''
+            },
+            page: {
+                currnet: 1,
+                size: 1
             }
+        };
+    },
+    provide() {
+        return {
+            search: this
         };
     },
     methods: {
         queryInintHandle() {
+            this.page.currnet = 1;
             console.log('search');
         },
         resetHandle() {
